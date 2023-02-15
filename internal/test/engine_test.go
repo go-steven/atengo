@@ -8,12 +8,15 @@ import (
 
 func TestDefaultEngine_Run(t *testing.T) {
 	script := `export func() {
-	fmt.println("hello world")
+	println("hello world")
+	return "xxx"
 }
 `
 	engine := internal.NewEngine()
-	if _, _, err := engine.Eval(script); err != nil {
+	if a, b, err := engine.Eval(script); err != nil {
 		panic(err)
+	} else {
+		println("a:", a, ", b:", b)
 	}
 }
 
@@ -38,9 +41,9 @@ func TestDefaultEngine_Eval(t *testing.T) {
 	is_eval := false
 	xxx := func(...args) {
 		if is_eval {
-			fmt.println("hello world")
+			println("hello world")
 		} else {
-			fmt.println(args)
+			println(args)
 		}
 	}
 

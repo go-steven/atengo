@@ -13,7 +13,7 @@ func init() {
 
 const plugin_name = "LOG"
 
-const packageName = "tengo_LOG"
+const packageName = "atengo_LOG"
 
 type LogPlugin struct{}
 
