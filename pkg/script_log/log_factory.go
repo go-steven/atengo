@@ -1,7 +1,7 @@
 package script_log
 
 import (
-	"github.com/go-steven/atengo/internal/util"
+	"github.com/go-steven/atengo/pkg/util"
 	"sync"
 )
 

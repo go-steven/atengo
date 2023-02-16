@@ -1,4 +1,4 @@
-package internal
+package pkg
 
 import (
 	"github.com/d5/tengo/v2"
