@@ -3,12 +3,12 @@ package internal_plugin_log
 import (
 	"fmt"
 	"github.com/d5/tengo/v2"
-	"github.com/go-steven/atengo/internal"
-	"github.com/go-steven/atengo/internal/script_log"
+	"github.com/go-steven/atengo/pkg"
+	"github.com/go-steven/atengo/pkg/script_log"
 )
 
 func init() {
-	internal.RegisterPlugin(plugin_name, &LogPlugin{})
+	pkg.RegisterPlugin(plugin_name, &LogPlugin{})
 }
 
 const plugin_name = "LOG"

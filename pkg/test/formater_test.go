@@ -2,7 +2,6 @@ package test
 
 import (
 	"fmt"
-	"github.com/go-steven/atengo/internal"
 	"testing"
 	"time"
 )
@@ -14,7 +13,7 @@ export func(a, b) {
 	return a + b
 }
 `
-	s := internal.NewScriptFormater()
+	s := pkg.NewScriptFormater()
 	ret, err := s.ToSourceModel(script)
 	if err != nil {
 		panic(err)
@@ -29,7 +28,7 @@ func TestScriptFormater_ToSourceModel2(t *testing.T) {
 	script := `
 	return 3
 `
-	s := internal.NewScriptFormater()
+	s := pkg.NewScriptFormater()
 	ret, err := s.ToSourceModel(script)
 	if err != nil {
 		panic(err)
@@ -46,7 +45,7 @@ export func(a, b) {
 	return a + b
 }
 `
-	s := internal.NewScriptFormater()
+	s := pkg.NewScriptFormater()
 	ret, err := s.ToScript(script)
 	if err != nil {
 		panic(err)
@@ -61,7 +60,7 @@ func TestScriptFormater_ToScript2(t *testing.T) {
 	script := `
 	return 3
 `
-	s := internal.NewScriptFormater()
+	s := pkg.NewScriptFormater()
 	ret, err := s.ToScript(script)
 	if err != nil {
 		panic(err)

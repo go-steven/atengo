@@ -5,9 +5,9 @@ import (
 	"flag"
 	"fmt"
 	"github.com/d5/tengo/v2/stdlib"
-	"github.com/go-steven/atengo/internal"
-	_ "github.com/go-steven/atengo/internal/plugins" // 引用所有内部的plugins
-	util2 "github.com/go-steven/atengo/internal/util"
+	"github.com/go-steven/atengo/pkg"
+	_ "github.com/go-steven/atengo/pkg/plugins" // 引用所有内部的plugins
+	"github.com/go-steven/atengo/pkg/util"
 	"github.com/mkideal/log"
 	"io/ioutil"
 	"os"
@@ -39,7 +39,7 @@ func main() {
 	startT := time.Now()
 
 	modules := stdlib.GetModuleMap(stdlib.AllModuleNames()...)
-	for _, m := range internal.Plugins() {
+	for _, m := range pkg.Plugins() {
 		modules.AddBuiltinModule(m.Name(), m.Module())
 	}
 
@@ -78,14 +78,14 @@ func main() {
 			os.Exit(1)
 		}
 		if len(_dataMap) > 0 {
-			dataMap = util2.FixJsonMapFloat(_dataMap)
+			dataMap = util.FixJsonMapFloat(_dataMap)
 		}
 	}
 
-	engine := internal.NewEngine()
-	opts := []internal.RunOption{}
+	engine := pkg.NewEngine()
+	opts := []pkg.RunOption{}
 	if len(dataMap) > 0 {
-		opts = append(opts, internal.FuncData(dataMap))
+		opts = append(opts, pkg.FuncData(dataMap))
 	}
 
 	var ret, outputLog string
@@ -104,7 +104,7 @@ func main() {
 	}
 	if ret != "" {
 		println("返回结果:")
-		fmt.Fprintln(os.Stdout, util2.Json(ret))
+		fmt.Fprintln(os.Stdout, util.Json(ret))
 	}
 	println("返回日志: ", outputLog)
 	fmt.Printf("执行结束, 执行时间：%v\n", time.Now().Sub(startT))

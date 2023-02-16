@@ -1,4 +1,4 @@
-package internal
+package pkg
 
 import (
 	"bytes"
@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/d5/tengo/v2"
-	"github.com/go-steven/atengo/internal/script_log"
-	"github.com/go-steven/atengo/internal/show_source_line"
+	"github.com/go-steven/atengo/pkg/script_log"
+	"github.com/go-steven/atengo/pkg/show_source_line"
 	"github.com/mkideal/log"
 )
 

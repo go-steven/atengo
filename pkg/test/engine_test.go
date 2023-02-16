@@ -1,8 +1,8 @@
 package test
 
 import (
-	"github.com/go-steven/atengo/internal"
-	_ "github.com/go-steven/atengo/internal/plugins" // 引用所有内部的plugins
+	"github.com/go-steven/atengo/pkg"
+	_ "github.com/go-steven/atengo/pkg/plugins" // 引用所有内部的plugins
 	"testing"
 )
 
@@ -12,7 +12,7 @@ func TestDefaultEngine_Run(t *testing.T) {
 	return "xxx"
 }
 `
-	engine := internal.NewEngine()
+	engine := pkg.NewEngine()
 	if a, b, err := engine.Eval(script); err != nil {
 		panic(err)
 	} else {
@@ -25,7 +25,7 @@ func TestDefaultEngine_Run2(t *testing.T) {
 	x := 3
 	return x
 `
-	engine := internal.NewEngine()
+	engine := pkg.NewEngine()
 	ret, err := engine.Run(script)
 	if err != nil {
 		panic(err)
@@ -49,7 +49,7 @@ func TestDefaultEngine_Eval(t *testing.T) {
 
 	xxx("aaa")
 `
-	engine := internal.NewEngine()
+	engine := pkg.NewEngine()
 	if _, _, err := engine.Eval(script); err != nil {
 		panic(err)
 	}
